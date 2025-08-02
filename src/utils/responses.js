@@ -1,50 +1,51 @@
-// utils/response.js
+const responses = {
+  POSITIVE: [
+    "Nice one! Progress is progress.",
+    "You did it — even if it’s small, it matters.",
+    "Momentum is your secret weapon.",
+    "Another step forward. Keep stacking wins.",
+    "You crushed that. Take a second to feel it.",
+    "That’s what I’m talking about. Keep this energy.",
+    "Success isn’t loud. It just shows up like this.",
+    "You didn’t just do it — you owned it.",
+    "Killing it silently? Respect.",
+    "Little wins stack up to big shifts.",
+    "Execution over excuses — and you chose right.",
+    "Another notch on the belt. Keep slaying.",
+    "Progress over perfection. You're on track.",
+  ],
+  NEGATIVE: [
+    "Yeah, not every day’s a win. Just don’t stop.",
+    "Failure isn’t final — unless you quit.",
+    "Take the L, learn, and keep swinging.",
+    "Bad day? Happens. Just don’t stay stuck.",
+    "Tough days reveal tough people. Be that.",
+    "Bruised ego? Good. Growth hurts sometimes.",
+    "Even the best miss shots. Reset, go again.",
+    "Lost today? Find yourself tomorrow.",
+    "It sucked. Own it. Bounce back.",
+    "You fumbled. But the game isn’t over.",
+    "Crisis = feedback. You’re learning.",
+    "Struggle now, flex later.",
+  ],
+  NEUTRAL: [
+    "Just another day? That’s fine — consistency builds resilience.",
+    "Nothing wild, but staying steady beats burning out.",
+    "Not everything needs drama. Chill and carry on.",
+    "Keep it boring if it means staying on track.",
+    "Discipline is doing it even when it's dull.",
+    "Neutral isn’t nothing — it’s maintenance.",
+    "Middle ground days still matter.",
+    "No highs, no lows — that’s focus.",
+    "Steady work beats erratic hustle.",
+    "Routine = stability = compound growth.",
+    "Consistency makes chaos jealous.",
+    "No fireworks? Still a win in disguise.",
+  ],
+};
 
-const positiveResponses = [
-    "That's the spirit! Keep that fire alive 🔥",
-    "You're glowing today — mentally and emotionally ✨",
-    "That’s a win, even if it doesn’t feel like one.",
-    "Damn, life’s on your side today! Enjoy it 😎",
-    "This kind of energy can punch negativity in the face 💪",
-    "You’re vibing hard — don’t stop now.",
-    "You deserve this peace, don’t let guilt creep in.",
-    "That joy? Bookmark it. Revisit it often."
-  ];
-  
-  const neutralResponses = [
-    "Hmm, just another day in the simulation huh?",
-    "You survived. That’s good enough sometimes.",
-    "Not great, not terrible — just existence doing its thing.",
-    "Steady is underrated. Respect the calm.",
-    "Processing... like a potato in a slow cooker.",
-    "That’s the kind of day that just... existed.",
-    "Might not feel big, but showing up still counts.",
-    "Neutral days often build strong foundations."
-  ];
-  
-  const negativeResponses = [
-    "Damn, that sucks. But hey, it’s not permanent.",
-    "Life gave you a gut punch, huh? Swing back tomorrow.",
-    "Whatever dragged you down — bury it, don’t carry it.",
-    "Some days hit like bricks. Rest. Reset. Reload.",
-    "Feel it. Don’t fake it. Then let that shit go.",
-    "You’ve been through worse, don't forget that.",
-    "Pain’s just a shitty teacher with no chill — learn and ghost it.",
-    "You didn’t fold — that’s already a win, soldier."
-  ];
-  
-  /**
-   * Returns a random response based on the sentiment type
-   */
-  export const getResponse = (sentiment) => {
-    switch (sentiment) {
-      case 'positive':
-        return positiveResponses[Math.floor(Math.random() * positiveResponses.length)];
-      case 'neutral':
-        return neutralResponses[Math.floor(Math.random() * neutralResponses.length)];
-      case 'negative':
-        return negativeResponses[Math.floor(Math.random() * negativeResponses.length)];
-      default:
-        return "Your vibes confused the system. Try again.";
-    }
-  };
+export const getResponse = (sentiment) => {
+  const options = responses[sentiment.toUpperCase()];
+  if (!options || options.length === 0) return "Keep going.";
+  return options[Math.floor(Math.random() * options.length)];
+};
