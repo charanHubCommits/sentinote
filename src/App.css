@@ -1,38 +1,79 @@
-.App {
+/* App.css */
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f5f6fa;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #2f3640;
+}
+
+.app-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.app-title {
+  font-size: 3rem;
   text-align: center;
+  margin-bottom: 1rem;
+  font-weight: 900;
+  color: #6c5ce7;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.app-subtitle {
+  text-align: center;
+  color: #636e72;
+  font-style: italic;
+  margin-bottom: 2rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.entries-section {
+  margin-top: 2rem;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.no-entries {
+  text-align: center;
+  color: #b2bec3;
+}
+/* JournalEntryForm styles */
+.journal-form {
+  margin-bottom: 24px;
 }
 
-.App-link {
-  color: #61dafb;
+.journal-form textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  resize: none;
+  font-size: 16px;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #fff;
+  color: #333;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.journal-form textarea:focus {
+  outline: none;
+  border-color: #7f56d9;
+  box-shadow: 0 0 0 3px rgba(127, 86, 217, 0.2);
+}
+
+.journal-form button {
+  margin-top: 12px;
+  padding: 10px 16px;
+  background-color: #2563eb;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.journal-form button:hover {
+  background-color: #1e40af;
 }

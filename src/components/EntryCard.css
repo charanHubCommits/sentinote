@@ -1,0 +1,63 @@
+.entry-card {
+    background-color: #fff;
+    border-left: 6px solid #ccc;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+  }
+  
+  .entry-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+  }
+  
+  .entry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+  
+  .entry-date {
+    font-size: 0.85rem;
+    color: #888;
+  }
+  
+  .delete-btn {
+    background: none;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    color: #d33;
+  }
+  
+  .delete-btn:hover {
+    color: #a00;
+  }
+  
+  .entry-content {
+    font-size: 1.05rem;
+    color: #222;
+    margin-bottom: 0.5rem;
+  }
+  
+  .entry-comment {
+    font-style: italic;
+    color: #555;
+    font-size: 0.95rem;
+  }
+  
+  /* Optional: color code by sentiment */
+  .sentiment-positive {
+    border-left-color: #4caf50;
+  }
+  
+  .sentiment-neutral {
+    border-left-color: #2196f3;
+  }
+  
+  .sentiment-negative {
+    border-left-color: #f44336;
+  }
