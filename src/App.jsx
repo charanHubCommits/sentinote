@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import JournalEntryForm from './components/JournalEntryForm';
 import EntryCard from './components/EntryCard';
 import { analyzeSentiment } from './utils/sentiment';
-import { getResponse } from './utils/responses';
+import  {getResponse}  from './utils/responses';
 import './App.css';
 
 const LOCAL_STORAGE_KEY = 'sentinote_entries';
@@ -17,18 +17,20 @@ const App = () => {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(entries));
   }, [entries]);
 
-  const handleAddEntry = (content) => {
-    const sentiment = analyzeSentiment(content);
-    const comment = getResponse(sentiment);
-    const entry = {
-      id: Date.now(), // Add ID for deletion
-      content,
-      sentiment,
-      comment,
-      timestamp: new Date().toISOString(), // Use 'timestamp', not 'date'
-    };
-    setEntries([entry, ...entries]);
+  const handleAddEntry = async (content) => {
+  const sentiment = await analyzeSentiment(content); // ✅ FIXED: await here
+  const comment = getResponse(sentiment);
+
+  const entry = {
+    id: Date.now(),
+    content,
+    sentiment,
+    comment,
+    timestamp: new Date().toISOString(),
   };
+
+  setEntries([entry, ...entries]);
+};
 
   const handleDeleteEntry = (id) => {
     const updatedEntries = entries.filter(entry => entry.id !== id);
