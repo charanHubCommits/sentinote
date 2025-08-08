@@ -1,0 +1,163 @@
+.date-card {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.date-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
+}
+
+.date-card.today {
+  border: 2px solid #7f56d9;
+  box-shadow: 0 4px 12px rgba(127, 86, 217, 0.2);
+}
+
+.date-header {
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  transition: background-color 0.2s;
+}
+
+.date-header:hover {
+  background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
+}
+
+.date-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.date-icon {
+  font-size: 1.5rem;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.date-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.date-title {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2f3640;
+}
+
+.entry-count {
+  font-size: 0.85rem;
+  color: #6c757d;
+  font-weight: 500;
+}
+
+.date-actions {
+  display: flex;
+  align-items: center;
+}
+
+.toggle-btn {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  color: #6c757d;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: all 0.2s;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toggle-btn:hover {
+  background-color: #e9ecef;
+  color: #495057;
+  transform: scale(1.1);
+}
+
+.date-entries {
+  padding: 1rem 1.5rem;
+  background-color: #fff;
+  border-top: 1px solid #e9ecef;
+}
+
+.date-entries .entry-card {
+  margin-bottom: 1rem;
+  border-radius: 8px;
+}
+
+.date-entries .entry-card:last-child {
+  margin-bottom: 0;
+}
+
+/* Today's card special styling */
+.date-card.today .date-header {
+  background: linear-gradient(135deg, #7f56d9 0%, #6941c6 100%);
+  color: #fff;
+}
+
+.date-card.today .date-title {
+  color: #fff;
+}
+
+.date-card.today .entry-count {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.date-card.today .toggle-btn {
+  color: #fff;
+}
+
+.date-card.today .toggle-btn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .date-header {
+    padding: 0.75rem 1rem;
+  }
+  
+  .date-info {
+    gap: 0.75rem;
+  }
+  
+  .date-icon {
+    width: 35px;
+    height: 35px;
+    font-size: 1.25rem;
+  }
+  
+  .date-title {
+    font-size: 1rem;
+  }
+  
+  .entry-count {
+    font-size: 0.8rem;
+  }
+  
+  .date-entries {
+    padding: 0.75rem 1rem;
+  }
+}
