@@ -43,7 +43,19 @@ const negativeWords = [
   'cramp', 'cramps', 'spasm', 'spasms', 'twitch', 'twitching', 'tremor',
   'shaking', 'shiver', 'shivering', 'chills', 'sweat', 'sweating', 'hot',
   'cold', 'freezing', 'burning', 'stinging', 'throbbing', 'pounding',
-  'aching', 'soreness', 'tenderness', 'stiffness', 'rigidity', 'tightness'
+  'aching', 'soreness', 'tenderness', 'stiffness', 'rigidity', 'tightness',
+  // Serious negative words
+  'die', 'death', 'dead', 'dying', 'suicide', 'suicidal', 'kill', 'killing',
+  'harm', 'hurt', 'cut', 'bleed', 'bleeding', 'wound', 'wounded',
+  'worthless', 'useless', 'meaningless', 'pointless', 'empty', 'numb',
+  'hopeless', 'helpless', 'desperate', 'despair', 'despairing',
+  'depressed', 'depression', 'anxious', 'anxiety', 'panic', 'terrified',
+  'terrifying', 'horrible', 'horrifying', 'terrible', 'awful', 'dreadful',
+  'miserable', 'miserably', 'suffering', 'suffer', 'suffered', 'agony',
+  'agonizing', 'torture', 'tortured', 'torturing', 'hell', 'nightmare',
+  'nightmarish', 'devastated', 'devastating', 'crushed', 'crushing',
+  'destroyed', 'destroying', 'ruined', 'ruining', 'broken', 'breaking',
+  'shattered', 'shattering', 'wrecked', 'wrecking', 'abandoned', 'abandoning'
 ];
 
 const neutralWords = [
@@ -110,7 +122,24 @@ const analyzeSentiment = (text) => {
     'feeling sick', 'feeling ill', 'not feeling well',
     'in pain', 'hurting', 'aching', 'sore',
     'feeling tired', 'exhausted', 'weak', 'dizzy',
-    'stomach ache', 'stomach pain', 'nausea', 'vomiting'
+    'stomach ache', 'stomach pain', 'nausea', 'vomiting',
+    // Serious negative phrases and suicidal ideation
+    'want to die', 'wanna die', 'wish i was dead', 'wish i were dead',
+    'kill myself', 'kill myself', 'end my life', 'end it all',
+    'don\'t want to live', 'don\'t wanna live', 'doesn\'t want to live',
+    'tired of living', 'tired of life', 'hate my life', 'hate life',
+    'life is worthless', 'life is meaningless', 'no point in living',
+    'better off dead', 'better if i was dead', 'better if i were dead',
+    'suicide', 'suicidal', 'self harm', 'self-harm', 'cut myself',
+    'hurt myself', 'harm myself', 'take my life', 'take my own life',
+    'give up', 'giving up', 'gave up', 'hopeless', 'helpless',
+    'worthless', 'useless', 'meaningless', 'pointless', 'empty',
+    'numb', 'dead inside', 'feel nothing', 'feel empty',
+    'no reason to live', 'no purpose', 'no meaning', 'no hope',
+    'depressed', 'depression', 'anxiety', 'panic', 'panic attack',
+    'mental health', 'mental illness', 'psychiatric', 'therapy',
+    'counseling', 'psychologist', 'psychiatrist', 'medication',
+    'antidepressant', 'anti-anxiety', 'mood stabilizer'
   ];
 
   const textLower = text.toLowerCase();
@@ -248,6 +277,43 @@ const analyzeSentiment = (text) => {
     positiveScore += 3;
   }
 
+  // Serious negative context adjustments
+  if (textLower.includes('want to die') || textLower.includes('wanna die')) {
+    negativeScore += 10; // Very high score for suicidal ideation
+  }
+  
+  if (textLower.includes('kill myself') || textLower.includes('end my life')) {
+    negativeScore += 10;
+  }
+  
+  if (textLower.includes('don\'t want to live') || textLower.includes('don\'t wanna live')) {
+    negativeScore += 8;
+  }
+  
+  if (textLower.includes('hate my life') || textLower.includes('hate life')) {
+    negativeScore += 7;
+  }
+  
+  if (textLower.includes('worthless') || textLower.includes('useless')) {
+    negativeScore += 6;
+  }
+  
+  if (textLower.includes('hopeless') || textLower.includes('helpless')) {
+    negativeScore += 6;
+  }
+  
+  if (textLower.includes('depressed') || textLower.includes('depression')) {
+    negativeScore += 5;
+  }
+  
+  if (textLower.includes('anxiety') || textLower.includes('panic')) {
+    negativeScore += 5;
+  }
+  
+  if (textLower.includes('suicide') || textLower.includes('suicidal')) {
+    negativeScore += 8;
+  }
+
   // Determine sentiment based on scores
   if (positiveScore > negativeScore && positiveScore > 0) {
     return 'positive';
@@ -287,7 +353,19 @@ const getComment = (sentiment, content) => {
       "Take care of yourself! 💙",
       "Rest and recover! 😴",
       "Sending healing vibes! 💚",
-      "You'll get through this! 💪"
+      "You'll get through this! 💪",
+      "Please reach out to someone you trust. 💙",
+      "Your life has value and meaning. 💖",
+      "There are people who care about you. 🤗",
+      "You don't have to go through this alone. 💜",
+      "Consider talking to a mental health professional. 🏥",
+      "Crisis helplines are available 24/7. 📞",
+      "You matter and you're worth it. ⭐",
+      "This feeling won't last forever. 🌅",
+      "You have the strength to overcome this. 💪",
+      "Small steps forward are still progress. 🌱",
+      "Be gentle with yourself today. 💙",
+      "You're doing better than you think. 💚"
     ],
     neutral: [
       "Interesting perspective. 🤔",
