@@ -9,7 +9,18 @@ const positiveWords = [
   'baby', 'pregnant', 'birth', 'anniversary', 'birthday', 'party', 'gift',
   'vacation', 'holiday', 'trip', 'adventure', 'explore', 'discover', 'learn',
   'friend', 'family', 'together', 'reunion', 'meeting', 'date', 'romance',
-  'dream', 'goal', 'aspiration', 'hope', 'future', 'opportunity', 'chance'
+  'dream', 'goal', 'aspiration', 'hope', 'future', 'opportunity', 'chance',
+  // Social and relaxation words
+  'chill', 'relax', 'hangout', 'hang', 'fun', 'enjoy', 'enjoying', 'enjoyed',
+  'good', 'nice', 'pleasant', 'comfortable', 'cozy', 'peaceful', 'calm',
+  'social', 'party', 'gathering', 'meetup', 'meeting', 'catchup', 'catch up',
+  'laugh', 'laughing', 'smile', 'smiling', 'grin', 'grinning', 'joke', 'joking',
+  'play', 'playing', 'game', 'gaming', 'music', 'dance', 'dancing', 'sing',
+  'singing', 'karaoke', 'movie', 'film', 'watch', 'watching', 'show', 'series',
+  'dinner', 'lunch', 'breakfast', 'brunch', 'coffee', 'tea', 'drink', 'drinking',
+  'food', 'meal', 'restaurant', 'cafe', 'bar', 'pub', 'club', 'concert',
+  'festival', 'celebration', 'birthday', 'anniversary', 'wedding', 'graduation',
+  'promotion', 'achievement', 'success', 'accomplishment', 'milestone'
 ];
 
 const negativeWords = [
@@ -70,7 +81,17 @@ const analyzeSentiment = (text) => {
     'graduated', 'degree', 'certificate', 'diploma',
     'baby', 'pregnant', 'birth', 'anniversary',
     'vacation', 'holiday', 'trip', 'adventure',
-    'dream come true', 'wish granted', 'goal achieved'
+    'dream come true', 'wish granted', 'goal achieved',
+    // Social and relaxation phrases
+    'chill with', 'hanging out', 'hang out', 'spending time',
+    'good time', 'great time', 'amazing time', 'wonderful time',
+    'fun with', 'enjoying with', 'enjoyed with', 'laughing with',
+    'dinner with', 'lunch with', 'coffee with', 'drinks with',
+    'party with', 'celebration with', 'gathering with',
+    'movie with', 'game with', 'music with', 'dance with',
+    'concert with', 'festival with', 'vacation with',
+    'family time', 'friend time', 'quality time', 'together time',
+    'relaxing with', 'peaceful with', 'calm with', 'cozy with'
   ];
 
   const negativePhrases = [
@@ -192,6 +213,39 @@ const analyzeSentiment = (text) => {
   // Health-related context adjustments
   if (textLower.includes('headache') || textLower.includes('pain') || textLower.includes('sick')) {
     negativeScore += 3;
+  }
+
+  // Social and relaxation context adjustments
+  if (textLower.includes('chill') && textLower.includes('friend')) {
+    positiveScore += 4;
+  }
+  
+  if (textLower.includes('hang') && textLower.includes('friend')) {
+    positiveScore += 3;
+  }
+  
+  if (textLower.includes('fun') && textLower.includes('friend')) {
+    positiveScore += 3;
+  }
+  
+  if (textLower.includes('enjoy') && textLower.includes('friend')) {
+    positiveScore += 3;
+  }
+  
+  if (textLower.includes('good time') || textLower.includes('great time')) {
+    positiveScore += 3;
+  }
+  
+  if (textLower.includes('dinner') && textLower.includes('friend')) {
+    positiveScore += 2;
+  }
+  
+  if (textLower.includes('coffee') && textLower.includes('friend')) {
+    positiveScore += 2;
+  }
+  
+  if (textLower.includes('party') && textLower.includes('friend')) {
+    positiveScore += 3;
   }
 
   // Determine sentiment based on scores
